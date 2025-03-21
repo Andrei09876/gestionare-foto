@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionarea fotografiilor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .album {
+            position: relative;
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestionarea fotografiilor</h1>
+    <div class="album">
+        <img id="photo" src="photo1.jpg" alt="Fotografie">
+        <div class="controls">
+            <button onclick="prevPhoto()">⬅</button>
+            <button onclick="nextPhoto()">➡</button>
+        </div>
+    </div>
+    <script>
+        const photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg"];
+        let index = 0;
+        function showPhoto() {
+            document.getElementById("photo").src = photos[index];
+        }
+        function prevPhoto() {
+            index = (index - 1 + photos.length) % photos.length;
+            showPhoto();
+        }
+        function nextPhoto() {
+            index = (index + 1) % photos.length;
+            showPhoto();
+        }
+    </script>
+</body>
+</html>
